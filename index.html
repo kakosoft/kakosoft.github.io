@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administration Console</title>
+    <title>Carboni - Administration Console</title>
 
 <!-- Connect to web3 -->
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
 
 </head>
-<body>
-    <h1>Administration Console</h1>
+<body style="background-color:black; color:white; font-family:courier new">
+<center>
+    <p>
+
+    </p>
+    <h1>Carboni - Administration Console</h1>
 
     <!--  detect whether metamask is installed -->
     <div id="mm-detected"></div>
@@ -19,12 +23,19 @@
     <!-- allow user to get access to metamask -->    
     <button id="mm-connect">Connect to Metamask</button>
 
-    <div id="mm-current-account"></div>
+    <div id="mm-current-account" style="color:limegreen;"></div>
     <p></p>
-
+    
+    <h2>Current list of auditors</h2>
+    <table>
+        <!-- insert list of all existing auditors -->
+    </table>
+    
+    <h2>Add new auditor</h2>
     <input id="new-auditor-address" type="text" placeholder="Enter audit address">
+    <input id="coins-to-mint" type="number" placeholder="Amount of coins to generate">
     <button id="new-auditor-button">Add auditor</button>
-
+</center>
 </body>
 
 <script src="admin.js"></script>

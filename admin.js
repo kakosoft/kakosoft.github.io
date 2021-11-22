@@ -18,7 +18,7 @@ mmEnable.onclick = async () => {
     await ethereum.request({ method: 'eth_requestAccounts'})
     const mmCurrentAccount = document.getElementById('mm-current-account');
 
-    mmCurrentAccount.innerHTML = ethereum.selectedAddress;
+    mmCurrentAccount.innerHTML = 'Connected to: ' + ethereum.selectedAddress;
 }
 
 // var web3 = new Web3(window.ethereum);
