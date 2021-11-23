@@ -1,7 +1,13 @@
 console.log("hello!!!!");
 
-const carboniAddress = '0x4f906B588e4BA52964a116625896f5a3723EB8F6';
+const carboniAddress = '0x7aE57c6Ef3eF1077Cd2a69fC2eA40eD744296DeF';
+
 const carboniABI = [
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
 	{
 		"anonymous": false,
 		"inputs": [
@@ -25,106 +31,6 @@ const carboniABI = [
 			}
 		],
 		"name": "Approval",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "bytes32",
-				"name": "role",
-				"type": "bytes32"
-			},
-			{
-				"indexed": true,
-				"internalType": "bytes32",
-				"name": "previousAdminRole",
-				"type": "bytes32"
-			},
-			{
-				"indexed": true,
-				"internalType": "bytes32",
-				"name": "newAdminRole",
-				"type": "bytes32"
-			}
-		],
-		"name": "RoleAdminChanged",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "bytes32",
-				"name": "role",
-				"type": "bytes32"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "account",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "sender",
-				"type": "address"
-			}
-		],
-		"name": "RoleGranted",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "bytes32",
-				"name": "role",
-				"type": "bytes32"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "account",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "sender",
-				"type": "address"
-			}
-		],
-		"name": "RoleRevoked",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "from",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "value",
-				"type": "uint256"
-			}
-		],
-		"name": "Transfer",
 		"type": "event"
 	},
 	{
@@ -272,6 +178,81 @@ const carboniABI = [
 		"type": "function"
 	},
 	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "previousAdminRole",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "newAdminRole",
+				"type": "bytes32"
+			}
+		],
+		"name": "RoleAdminChanged",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "sender",
+				"type": "address"
+			}
+		],
+		"name": "RoleGranted",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "sender",
+				"type": "address"
+			}
+		],
+		"name": "RoleRevoked",
+		"type": "event"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "address",
@@ -294,6 +275,31 @@ const carboniABI = [
 		],
 		"stateMutability": "nonpayable",
 		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "Transfer",
+		"type": "event"
 	},
 	{
 		"inputs": [
@@ -323,11 +329,6 @@ const carboniABI = [
 		],
 		"stateMutability": "nonpayable",
 		"type": "function"
-	},
-	{
-		"inputs": [],
-		"stateMutability": "nonpayable",
-		"type": "constructor"
 	},
 	{
 		"inputs": [
@@ -412,6 +413,49 @@ const carboniABI = [
 				"internalType": "bytes32",
 				"name": "",
 				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "uint256",
+				"name": "index",
+				"type": "uint256"
+			}
+		],
+		"name": "getRoleMember",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			}
+		],
+		"name": "getRoleMemberCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
@@ -527,6 +571,7 @@ const carboniABI = [
 	}
 ];
 
+
 window.addEventListener('load', function () {
     if (typeof window.ethereum !== 'undefined') {
         console.log('Metamask detected!!!')
@@ -545,22 +590,25 @@ mmEnable.onclick = async () => {
     mmCurrentAccount.innerHTML = 'Connected to: ' + ethereum.selectedAddress;
 }
 
-// var web3 = new Web3(window.ethereum);
+// connecting web3 to a contract 
+
+var web3 = new Web3(window.ethereum);
+const carboni = new web3.eth.Contract (carboniABI, carboniAddress);
 
 const addAuditor = document.getElementById('new-auditor-button');
 
 addAuditor.onclick = async () => {
     const auditorAddress = document.getElementById('new-auditor-address').value;
 
-    // connecting web3 to a contract
-    var web3 = new Web3(window.ethereum);
+    // connecting web3 to a contract 
 
-   
-    const carboni = new web3.eth.Contract (carboniABI, carboniAddress);
-    
-   // console.log(carboni.methods.MINTER_ROLE());
+	var web3 = new Web3(window.ethereum);
+	const carboni = new web3.eth.Contract (carboniABI, carboniAddress);
+
+  // console.log(carboni.methods.MINTER_ROLE().value);
 
     await carboni.methods.grantRole('0xd5391393', auditorAddress).send({from: ethereum.selectedAddress});
+//	await carboni.methods.grantRole(carboni.methods.MINTER_ROLE().value, auditorAddress).send({from: ethereum.selectedAddress});
 
     //is it the following line necessary?:
     // carboni.setProvider(window.ethereum);
@@ -569,11 +617,81 @@ addAuditor.onclick = async () => {
     // await carboni.methods.newAuditor(auditorAddress).send({from: ethereum.selectedAddress})
 }
 
-//query to update the table of auditors:
+//     // connecting web3 to a contract
+//     var web3 = new Web3(window.ethereum);
 
-// const minterCount = await carboni.getRoleMemberCount(MINTER_ROLE);
+   
+//     const carboni = new web3.eth.Contract (carboniABI, carboniAddress);
+    
+//    // console.log(carboni.methods.MINTER_ROLE());
 
-// const members = [];
-// for (let i = 0; i < minterCount; ++i) {
-//     members.push(await carboni.getRoleMember(MINTER_ROLE, i));
-//}
+//     await carboni.methods.grantRole('0xd5391393', auditorAddress).send({from: ethereum.selectedAddress});
+
+
+const tableAuditors = document.getElementById('table-auditors');
+
+tableAuditors.onclick = async () => {
+
+	// connecting web3 to a contract 
+
+	var web3 = new Web3(window.ethereum);
+	const carboni = new web3.eth.Contract (carboniABI, carboniAddress);
+
+	const minterCount = await carboni.methods.getRoleMemberCount('0xd5391393').call({from: ethereum.selectedAddress});
+
+	const members = [];
+	for (let i = 0; i < minterCount; ++i) {
+	members.push(await carboni.methods.getRoleMember('0xd5391393', i).call({from: ethereum.selectedAddress}));
+	}
+
+	// create table with the addresses of the existing auditors
+
+	let table = document.createElement("table");
+	let tHead = document.createElement("thead");
+	let tBody = document.createElement("tbody");
+
+	// create header
+
+	let headRow = document.createElement("tr");
+
+	let headCol1 = document.createElement("th");
+	headCol1.innerHTML = "Address";
+	let headCol2 = document.createElement("th");
+	headCol2.innerHTML = "Coins";
+
+	headRow.appendChild(headCol1);
+	headRow.appendChild(headCol2);
+	tHead.appendChild(headRow);
+
+	// Fill the body of the table
+
+	for (let i = 0; i < members.length; i++) {
+		console.log(members[i]);
+		// Create row
+		let tRow= document.createElement("tr");
+
+		// Creates the tds and include the values for the auditor
+
+		let addressValue = document.createElement("td");
+		let coinsValue = document.createElement("td");
+
+		addressValue.innerHTML = members[i];
+		// addressValue.appendChild(members[i]); // OJO! revisar formato de getRoleMember. Si no funciona, probar con addressValue.innerHTML = members[i] o con members[i].toString()
+		// coinsValue.appendChild(carboni.methods.balanceOf(members[i])); // OJO! revisar formato
+		coinsValue.innerHTML = carboni.methods.balanceOf(members[i]); 
+
+		tRow.appendChild(addressValue);
+		tRow.appendChild(coinsValue);
+
+		// add row at the end of the table
+		tBody.appendChild(tRow);
+	}
+
+	table.appendChild(tHead);
+	table.appendChild(tBody);
+
+	// Adding the entire table to the body tag
+	let body = document.getElementsByTagName("body")[0];
+	body.appendChild(table);
+	// document.getElementById('body').appendChild(table);
+}
