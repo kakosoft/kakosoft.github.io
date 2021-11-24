@@ -605,8 +605,8 @@ addAuditor.onclick = async () => {
 	var web3 = new Web3(window.ethereum);
 	const carboni = new web3.eth.Contract (carboniABI, carboniAddress);
 
-    await carboni.methods.grantRole('0xd5391393', auditorAddress).send({from: ethereum.selectedAddress});
-	//	await carboni.methods.grantRole(carboni.methods.MINTER_ROLE().value, auditorAddress).send({from: ethereum.selectedAddress});
+   // await carboni.methods.grantRole('0xd5391393', auditorAddress).send({from: ethereum.selectedAddress});
+   await carboni.methods.grantRole(Web3.utils.keccak256('MINTER_ROLE'), auditorAddress).send({from: ethereum.selectedAddress});
 }
 
 const mintCoins = document.getElementById('mint-coins-button');
@@ -630,11 +630,12 @@ tableAuditors.onclick = async () => {
 	// connecting web3 to a contract 
 	var web3 = new Web3(window.ethereum);
 	const carboni = new web3.eth.Contract (carboniABI, carboniAddress);
-	const minterCount = await carboni.methods.getRoleMemberCount('0xd5391393').call({from: ethereum.selectedAddress});
+	const minterCount = await carboni.methods.getRoleMemberCount(Web3.utils.keccak256('MINTER_ROLE')).call({from: ethereum.selectedAddress});
+	// const minterCount = await carboni.methods.getRoleMemberCount('0xd5391393').call({from: ethereum.selectedAddress});
 
 	const members = [];
 	for (let i = 0; i < minterCount; ++i) {
-		members.push(await carboni.methods.getRoleMember('0xd5391393', i).call({from: ethereum.selectedAddress}));
+		members.push(await carboni.methods.getRoleMember(Web3.utils.keccak256('MINTER_ROLE'), i).call({from: ethereum.selectedAddress}));
 	}
 
 	// create table with the addresses of the existing auditors
