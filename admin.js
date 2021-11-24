@@ -605,27 +605,22 @@ addAuditor.onclick = async () => {
 	var web3 = new Web3(window.ethereum);
 	const carboni = new web3.eth.Contract (carboniABI, carboniAddress);
 
-  // console.log(carboni.methods.MINTER_ROLE().value);
-
     await carboni.methods.grantRole('0xd5391393', auditorAddress).send({from: ethereum.selectedAddress});
-//	await carboni.methods.grantRole(carboni.methods.MINTER_ROLE().value, auditorAddress).send({from: ethereum.selectedAddress});
-
-    //is it the following line necessary?:
-    // carboni.setProvider(window.ethereum);
-
-    // ethereum tx:
-    // await carboni.methods.newAuditor(auditorAddress).send({from: ethereum.selectedAddress})
+	//	await carboni.methods.grantRole(carboni.methods.MINTER_ROLE().value, auditorAddress).send({from: ethereum.selectedAddress});
 }
 
-//     // connecting web3 to a contract
-//     var web3 = new Web3(window.ethereum);
+const mintCoins = document.getElementById('mint-coins-button');
 
-   
-//     const carboni = new web3.eth.Contract (carboniABI, carboniAddress);
-    
-//    // console.log(carboni.methods.MINTER_ROLE());
+mintCoins.onclick = async () => {
+	let coinsAmount = document.getElementById('amount-of-coins').value;
 
-//     await carboni.methods.grantRole('0xd5391393', auditorAddress).send({from: ethereum.selectedAddress});
+    // connecting web3 to a contract 
+
+	var web3 = new Web3(window.ethereum);
+	const carboni = new web3.eth.Contract (carboniABI, carboniAddress);
+
+	await carboni.methods.mint(ethereum.selectedAddress, coinsAmount).send({from: ethereum.selectedAddress});
+}
 
 
 const tableAuditors = document.getElementById('table-auditors');
@@ -633,15 +628,13 @@ const tableAuditors = document.getElementById('table-auditors');
 tableAuditors.onclick = async () => {
 
 	// connecting web3 to a contract 
-
 	var web3 = new Web3(window.ethereum);
 	const carboni = new web3.eth.Contract (carboniABI, carboniAddress);
-
 	const minterCount = await carboni.methods.getRoleMemberCount('0xd5391393').call({from: ethereum.selectedAddress});
 
 	const members = [];
 	for (let i = 0; i < minterCount; ++i) {
-	members.push(await carboni.methods.getRoleMember('0xd5391393', i).call({from: ethereum.selectedAddress}));
+		members.push(await carboni.methods.getRoleMember('0xd5391393', i).call({from: ethereum.selectedAddress}));
 	}
 
 	// create table with the addresses of the existing auditors
@@ -652,46 +645,42 @@ tableAuditors.onclick = async () => {
 
 	// create header
 
-	let headRow = document.createElement("tr");
+		let headRow = document.createElement("tr");
 
-	let headCol1 = document.createElement("th");
-	headCol1.innerHTML = "Address";
-	let headCol2 = document.createElement("th");
-	headCol2.innerHTML = "Coins";
+		let headCol1 = document.createElement("th");
+		headCol1.innerHTML = "Address";
+		let headCol2 = document.createElement("th");
+		headCol2.innerHTML = "Coins";
 
-	headRow.appendChild(headCol1);
-	headRow.appendChild(headCol2);
-	tHead.appendChild(headRow);
+		headRow.appendChild(headCol1);
+		headRow.appendChild(headCol2);
+		tHead.appendChild(headRow);
 
-	// Fill the body of the table
+		// Fill the body of the table
 
-	for (let i = 0; i < members.length; i++) {
-		console.log(members[i]);
-		// Create row
-		let tRow= document.createElement("tr");
+		for (let i = 0; i < members.length; i++) {
+			console.log(members[i]);
+			// Create row
+			let tRow= document.createElement("tr");
 
-		// Creates the tds and include the values for the auditor
+			// Creates the tds and include the values for the auditor
+			let addressValue = document.createElement("td");
+			let coinsValue = document.createElement("td");
 
-		let addressValue = document.createElement("td");
-		let coinsValue = document.createElement("td");
+			addressValue.innerHTML = members[i];
+			coinsValue.innerHTML = await carboni.methods.balanceOf(members[i]).call({from: ethereum.selectedAddress}); 
 
-		addressValue.innerHTML = members[i];
-		// addressValue.appendChild(members[i]); // OJO! revisar formato de getRoleMember. Si no funciona, probar con addressValue.innerHTML = members[i] o con members[i].toString()
-		// coinsValue.appendChild(carboni.methods.balanceOf(members[i])); // OJO! revisar formato
-		coinsValue.innerHTML = carboni.methods.balanceOf(members[i]); 
+			tRow.appendChild(addressValue);
+			tRow.appendChild(coinsValue);
 
-		tRow.appendChild(addressValue);
-		tRow.appendChild(coinsValue);
+			// add row at the end of the table
+			tBody.appendChild(tRow);
+		}
 
-		// add row at the end of the table
-		tBody.appendChild(tRow);
-	}
+		table.appendChild(tHead);
+		table.appendChild(tBody);
 
-	table.appendChild(tHead);
-	table.appendChild(tBody);
-
-	// Adding the entire table to the body tag
-	let body = document.getElementsByTagName("body")[0];
-	body.appendChild(table);
-	// document.getElementById('body').appendChild(table);
+		// Adding the entire table to the body tag
+		let body = document.getElementsByTagName("body")[0];
+		body.appendChild(table);
 }
