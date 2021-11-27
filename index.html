@@ -11,34 +11,55 @@
 
 </head>
 <body style="background-color:black; color:white; font-family:courier new">
-    <center>
-        <p>
+    <table style="width:100%">
+        <tr>
+          <th style="width:25%"></th>
+          <th style="width:50%; border-style: inset">
+            <h1>Carboni - Administration Console</h1>
+          </th>
+          <th style="width:25%">
+            <!--  detect whether metamask is installed -->
+           <div id="mm-detected"></div>
 
-        </p>
-        <h1>Carboni - Administration Console</h1>
+           <!-- allow user to get access to metamask -->    
+           <button id="mm-connect" style="border: 2px solid limegreen; background-color: black; color: limegreen">Connect to Metamask</button>
 
-        <!--  detect whether metamask is installed -->
-        <div id="mm-detected"></div>
+            <!-- display address of connected account --> 
+           <div id="mm-current-account" style="color:limegreen;"></div>  
 
-        <!-- allow user to get access to metamask -->    
-        <button id="mm-connect">Connect to Metamask</button>
+          </th>
+        </tr>
+        <tr>
+            <th style="width:25%; text-align:right">
+                <h2>Add new auditor</h2>
+            </th>
+            <th style="width:40%">
+                <input id="new-auditor-address" type="text" placeholder="Enter audit address">
+                <button id="new-auditor-button">Add auditor</button>
+            </th>
+            <th style="width:35%"></th>
+        </tr>        
+        <tr>
+            <th style="width:25%; text-align:right">
+                <h2>Mint Coins</h2>
+            </th>
+            <th style="width:40%">
+                <input id="amount-of-coins" type="number" placeholder="Enter amount">
+                <button id="mint-coins-button">Mint coins</button>
+            </th>
+            <th style="width:35%"></th>
+        </tr>
+        <tr>
+            <th style="width:25%; text-align:right">
+                <h2>Current list of auditors</h2>
+            </th>
+            <th style="width:40%">
+                <button id="table-auditors">Retrieve Auditors</button>
+            </th>
+            <th style="width:35%" id="auditors"></th>
+        </tr>
+      </table>
 
-        <!-- display address of connected account --> 
-        <div id="mm-current-account" style="color:limegreen;"></div>
-        <p></p>
-        
-        <h2>Add new auditor</h2>
-        <input id="new-auditor-address" type="text" placeholder="Enter audit address">
-        <button id="new-auditor-button">Add auditor</button>
-
-        <h2>Mint Coins</h2>
-        <input id="amount-of-coins" type="number" placeholder="Enter amount">
-        <button id="mint-coins-button">Mint coins</button>
-
-        <h2>Current list of auditors</h2>
-
-        <button id="table-auditors">Retrieve Auditors</button>
-    </center>
 </body>
 
 <script src="admin.js"></script>

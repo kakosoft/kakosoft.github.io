@@ -654,6 +654,7 @@ tableAuditors.onclick = async () => {
 		headCol2.innerHTML = "Coins";
 
 		headRow.appendChild(headCol1);
+		headRow.appendChild(document.createElement("th"));
 		headRow.appendChild(headCol2);
 		tHead.appendChild(headRow);
 
@@ -672,6 +673,7 @@ tableAuditors.onclick = async () => {
 			coinsValue.innerHTML = await carboni.methods.balanceOf(members[i]).call({from: ethereum.selectedAddress}); 
 
 			tRow.appendChild(addressValue);
+			tRow.appendChild(document.createElement("th"));
 			tRow.appendChild(coinsValue);
 
 			// add row at the end of the table
@@ -682,6 +684,7 @@ tableAuditors.onclick = async () => {
 		table.appendChild(tBody);
 
 		// Adding the entire table to the body tag
-		let body = document.getElementsByTagName("body")[0];
-		body.appendChild(table);
+
+		const auditorsCell = document.getElementById('auditors');
+		auditorsCell.appendChild(table);
 }
